@@ -14,4 +14,7 @@ class Application < Sinatra::Base
     end
 
     #add rubytopia; get '/playgame'??
+    get '/playgame' do 
+        erb :playgame 
+    end
 end
