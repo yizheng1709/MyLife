@@ -8,6 +8,15 @@ class Application < Sinatra::Base
         password = params[:password]
     end
 
+    get '/sign-up' do
+        erb :new_user 
+    end
+
+    post '/sign-up' do 
+        user = params[:username]
+        password = params[:password]
+    end
+
     #adds journal entry
     get '/entry' do
         erb :entry 
