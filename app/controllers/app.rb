@@ -1,4 +1,10 @@
 class Application < Sinatra::Base 
+
+    configure do
+        set :public_folder, 'public'
+        set :views, 'app/views'
+    end
+
     get '/' do
         erb :index
     end
@@ -27,8 +33,8 @@ class Application < Sinatra::Base
     #show all entries
     #add button to lead to adding new entry
     get '/entries' do
-        id = session{:user_id} 
-        @entries = Entry.where('id == #{id}').order(:date)
+        id = session[:user_id] 
+        @entries = Entry.where('user.id == #{id}').order(:date)
         #how to specify the id that I want to look for?
         erb :entries 
     end
