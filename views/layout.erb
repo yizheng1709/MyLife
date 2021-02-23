@@ -10,13 +10,15 @@ navigation bar
 <img src="https://lh3.googleusercontent.com/SJSuL5W2guKeTcr18j_7ibPOfMckaxWhR_ec7jKv-BSD9xgl-qWxG-yGGlGmiJKyIq2n2SdjRkEelW3Lhc2Xo-TqgjHn0o9cZ0JNovD-ce2zGINdhzqF9k8EgX7kJw-IPE6UNse-UOb_hN5PHi4ZSaNV82VYbfP0paS9f9w-iLuIRKQCnz94fxrdqk38mXkV0CcDiSfGafRW9dAio7_SHXlmAaCkuvXpGx0MOGCl2xZ_5Vbb2vS1EXuYKU0WWgJT6szv8fYdtMnsLLZSJ__Pc_-HBgxxO5VHiIyccNYSRWzkM8QKqTlquweeHM1XH-Q3oRisHlsHLRckgiCLDPwshGlHD0mCddnDURxc8o_DM5LQAgmk-rmScSZJT_Ro6VUxPR8GO9kZQjnaVRA8ueriS-HfOpJ68POFz2rcUAOs5I0-VRxsZbQclevPnWdnwKlxlEgZB9WlZCpzH65yTaYAFZe6gn0WO0mws9lTccFaXRR7QboYOFZd-amPFFCNsqzYDFnqbJb6fs4D47FbhiHthPCgKnn7N3fuPeWCZyO8yl8MmyKkHNb3eqdB6d09uKUAosKIssS_UGhg_-jkeNEnCUZAsjfO1ln3ONxn1_Tv4PI-dGsMyyOwkXjbtGgh2hn1R8c8LoPlVkW7j2Uy2q1TDogr9DsSaS2E8Tj9Xl8v8OhJiCn5rQZfOi5gCPac=s200-no?authuser=0" alt="mylife logo"> 
 
 <% t = DateTime.now %>
-<p> <%= "The date is #{t.strftime('%A, %B %d, %Y')}" %> </p>
+<p> <%= "Today is #{t.strftime('%A, %B %d, %Y')}. It is currently #{t.strftime('%l')}:#{t.strftime('%M %p')}." %> </p>
+<p> Would you like to record your life? </p>
 <div class="topnav">
   <a class="active" href="/">Home</a>
   <a href="entry">Add a Journal Entry</a>
   <a href="organizer">Organizer</a>
   <a href="playgame">Play a Game</a>
 </div>
+<br> <br>
 
 
 <%= yield %>
