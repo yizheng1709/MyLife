@@ -3,6 +3,11 @@ class Application < Sinatra::Base
         erb :index
     end
 
+    post '/login' do 
+        user = params[:username]
+        password = params[:password]
+    end
+
     #adds journal entry
     get '/entry' do
         erb :entry 
