@@ -23,7 +23,7 @@ class Application < Sinatra::Base
         erb :new_user #shows form for signing up
     end
 
-    post '/sign-up' do #uses data from new_user.erb
+    post '/signup' do #uses data from new_user.erb
         @user = User.create(username: params[:username], password: params[:password])
         #need to create session hash
         session[:user_id] = @user.id
