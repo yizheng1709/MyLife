@@ -31,7 +31,7 @@ navigation bar
 
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" href="/entries">Journal Entries</a>
+    <a class="nav-link" href="/entries">Journal Entries</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/organizers">Organizers</a>
@@ -68,6 +68,10 @@ navigation bar
     src: url("fonts/Minecraft.ttf");
 }
 
+.nav-link {
+    cursor: pointer;
+}
+
 .p1 {
   font-family: Minecraft;
   text-align: center;
@@ -90,6 +94,23 @@ navigation bar
   font-size: 15px;
 }
 
+.p5 {
+    font-family: Minecraft;
+    text-align: center;
+    font-size: 21px;
+}
+
+.front_button {
+    padding: 10px 26px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.front_button:hover {
+  background-color: #9ed0ff;
+  color: #efe8ff;
+}
 
 
 /* body {
@@ -115,6 +136,10 @@ navigation bar
     border-radius: 75px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.pokemon {
+    text-align: center;
 }
 
 .div1 {
