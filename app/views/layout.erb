@@ -16,11 +16,14 @@ navigation bar
 
 <link rel="stylesheet" href="/stylesheets/main.css" />
 
+<div class="div2">
+
 <img src="images/logo.png" alt="mylife logo" class="center"> 
 
     <% t = DateTime.now %>
     <p class="p1"> <%= "Today is #{t.strftime('%A, %B %d, %Y')}. It is currently #{t.strftime('%l')}:#{t.strftime('%M %p')}." %> </p>
     <p class="p1"> Would you like to record your life? </p>
+</div>
 
 <nav class="navigation-bar">
 
@@ -33,6 +36,9 @@ navigation bar
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/playgame">Play Game</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/signout">Sign Out</a>
   </li>
 </ul>
 </nav>
@@ -64,13 +70,13 @@ navigation bar
   text-align: center;
 }
 
-body {
+/* body {
   background-image: url("images/bg.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
   background-position: center;
-}
+} */
 
 .center {
   display: block;
@@ -82,7 +88,7 @@ body {
 .navigation-bar {
     background-image: url("images/navbar.png");
     font-family: Minecraft;
-    width: 40%; 
+    width: 50%; 
     height: 43px;
     opacity: 0.8; 
     border-radius: 75px;
@@ -91,6 +97,16 @@ body {
 }
 
 .div1 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.div2 {
+    background-image: url("images/bg.png");
+    width: 50%;
+    height: 230px;
+    opacity: 0.8; 
+    border-radius: 75px;
     margin-left: auto;
     margin-right: auto;
 }
