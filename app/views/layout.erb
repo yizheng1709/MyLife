@@ -7,24 +7,61 @@ navigation bar
 
 <!DOCTYPE html>
 <html>
-<header>
-    <img src="images/logo.png" alt="mylife logo"> 
+
+
+<header >
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+
+
+<link rel="stylesheet" href="/stylesheets/main.css" />
+
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
+
+<img src="images/logo.png" alt="mylife logo" class="center"> 
 
     <% t = DateTime.now %>
-    <p> <%= "Today is #{t.strftime('%A, %B %d, %Y')}. It is currently #{t.strftime('%l')}:#{t.strftime('%M %p')}." %> </p>
-    <p> Would you like to record your life? </p>
-</header>
+    <p class="p1"> <%= "Today is #{t.strftime('%A, %B %d, %Y')}. It is currently #{t.strftime('%l')}:#{t.strftime('%M %p')}." %> </p>
+    <p class="p1"> Would you like to record your life? </p>
 
-<nav>
+
+
+
+
+
+<%# <nav>
     <div class="topnav">
         <a class="active" href="/">Home</a>
         <a href="entry">Add a Journal Entry</a>
         <a href="organizer">Organizer</a>
         <a href="playgame">Play a Game</a>
     </div>
-</nav>
+</nav> %>
+</header>
 <br> <br>
+<%# <img src="images/sakura.gif" alt="sakura" class="sakura">  %>
+
+
 <style>
+
+.p1 {
+  font-family: "Lucida Handwriting";
+  text-align: center;
+}
+
 body {
   background-image: url("images/bg.png");
   background-repeat: no-repeat;
@@ -32,6 +69,15 @@ body {
   background-size: cover;
   background-position: center;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9%;
+}
+
+
 </style>
 
 <%= yield %>

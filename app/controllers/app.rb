@@ -10,11 +10,12 @@ class Application < Sinatra::Base
     end
 
     post '/login' do 
-        user = params[:username]
-        password = params[:password]
         #authenticate password
-        current_user = User.find_by(:username == user) #user class will have username column
-        session[:user_id] = current_user.id
+        @user = User.find_by(username: params[:username], password: params[:password]) 
+        #user class will have username column
+        if @user 
+            session[:user_id] = @user.id
+        end
         redirect :index #needs work
     end
 
@@ -23,10 +24,9 @@ class Application < Sinatra::Base
     end
 
     post '/sign-up' do #uses data from new_user.erb
-        user = params[:username]
-        password = params[:password]
-        user = User.create(username: user, password: password)
+        @user = User.create(username: params[:username], password: params[:password])
         #need to create session hash
+        session[:user_id] = @user.id
         redirect to :index 
     end
 
@@ -38,8 +38,7 @@ class Application < Sinatra::Base
         #how to specify the id that I want to look for?
         erb :entries 
     end
-
-    post 
+ 
 
     #show all organizers
     #add button to lead to adding new organizer
