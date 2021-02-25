@@ -27,7 +27,7 @@ class Application < Sinatra::Base
         @user = User.create(username: params[:username], password: params[:password])
         #need to create session hash
         session[:user_id] = @user.id
-        redirect to :index 
+        redirect to :entries 
     end
 
     #show all entries
