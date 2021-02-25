@@ -22,6 +22,7 @@ navigation bar
     <p class="p1"> <%= "Today is #{t.strftime('%A, %B %d, %Y')}. It is currently #{t.strftime('%l')}:#{t.strftime('%M %p')}." %> </p>
     <p class="p1"> Would you like to record your life? </p>
 
+<nav class="navigation-bar">
 
 <ul class="nav justify-content-center">
   <li class="nav-item">
@@ -34,6 +35,7 @@ navigation bar
     <a class="nav-link" href="/playgame">Play Game</a>
   </li>
 </ul>
+</nav>
 
 
 
@@ -70,6 +72,16 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 9%;
+}
+
+.navigation-bar {
+    background-image: url("images/navbar.png");
+    width: 40%; 
+    height: 43px;
+    opacity: 0.8; 
+    border-radius: 75px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
