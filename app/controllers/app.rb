@@ -9,14 +9,18 @@ class Application < Sinatra::Base
         erb :index
     end
 
-    post '/login' do 
-        #authenticate password
-        @user = User.find_by(username: params[:username], password: params[:password]) 
-        #user class will have username column
-        if @user 
-            session[:user_id] = @user.id
+    get "/login" do
+        erb :login
+    end
+    
+    post "/login" do
+        user = User.find_by(username: params[:username])
+        if user && user.authenticate(params[:password])
+          session[:user_id] = user.id
+          redirect '/account'
+        else 
+          redirect '/failure'
         end
-        redirect :index #needs work
     end
 
     get '/sign-up' do
@@ -27,7 +31,7 @@ class Application < Sinatra::Base
         @user = User.create(username: params[:username], password: params[:password])
         #need to create session hash
         session[:user_id] = @user.id
-        redirect to :entries 
+        redirect to "user/entries" 
     end
 
     #show all entries
@@ -36,14 +40,14 @@ class Application < Sinatra::Base
         id = session[:user_id] 
         @entries = Entry.where('user.id == #{id}').order(:date)
         #how to specify the id that I want to look for?
-        erb :entries 
+        erb ":users/entries" 
     end
  
 
     #show all organizers
     #add button to lead to adding new organizer
     get '/organizer' do 
-        erb :organizer 
+        erb ":user/organizer" 
     end
 
     #add rubytopia; get '/playgame'??
