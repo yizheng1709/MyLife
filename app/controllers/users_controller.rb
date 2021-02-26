@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     get '/sign-up' do
         if session[:user_id]
-            redirect "/users/#{session[:user_id]}"
+            redirect "/users/logged_in_home"
             #cant let current users sign up again if they are in session
         end
         erb :"/new_forms/new_user" #shows form for signing up
