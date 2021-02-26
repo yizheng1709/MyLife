@@ -2,4 +2,7 @@ require './config/environment'
 
 use Rack::MethodOverride
 
-run Application
+use UsersController
+use EntriesController
+use OrganizersController
+run ApplicationController
