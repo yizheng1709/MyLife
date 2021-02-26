@@ -32,10 +32,9 @@ class Application < Sinatra::Base
     end
 
     post '/signup' do #uses data from new_user.erb
-        @user = User.create(username: params[:username], password_digest: params[:password])
-        #need to create session hash
+        @user = User.create(username: params[:username], password: params[:password])
         session[:user_id] = @user.id
-        redirect to "/user/home" 
+        redirect to "/user/logged_in_home" 
     end
 
     #show all entries
