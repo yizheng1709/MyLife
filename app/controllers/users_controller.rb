@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     get "/login" do
         if session[:user_id]
-            erb :"user/logged_in_home"
+            erb :"/user/logged_in_home"
         end
         erb :index
     end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         redirect to "/user/logged_in_home" 
     end
 
-    get '/signout' do 
+    get '/logout' do 
         session.clear
         redirect '/login'
     end
