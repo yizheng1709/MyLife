@@ -11,9 +11,11 @@ class OrganizersController < ApplicationController
         task_array = task_array.collect{|task_name| Task.create(task_name) }
         redirect to "organizers/#{@organizer.id}"
     end
+
     #show all organizers
-    #add button to lead to adding new organizer
+    #add button to lead to adding new organizer #done
     get '/organizers' do 
+        
         erb :"/user/organizers"
     end
 end

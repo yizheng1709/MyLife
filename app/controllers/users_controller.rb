@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     get "/login" do
-        erb :login
+        erb :index
     end
     
     post "/login" do
@@ -25,6 +25,11 @@ class UsersController < ApplicationController
         @user = User.create(username: params[:username], password: params[:password])
         session[:user_id] = @user.id
         redirect to "/user/logged_in_home" 
+    end
+
+    get '/signout' do 
+        session.clear
+        redirect '/login'
     end
 
 end
