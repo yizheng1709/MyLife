@@ -17,34 +17,38 @@ class Application < Sinatra::Base
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
-          redirect '/account'
+          redirect "/account"
         else 
-          redirect '/failure'
+          redirect "/failure"
         end
     end
 
     get '/sign-up' do
-        erb ":/new-forms/new_user" #shows form for signing up
+        if session[:user_id]
+            redirect "/users/#{session[:user_id]}"
+            #cant let current users sign up again if they are in session
+        end
+        erb :"/new_forms/new_user" #shows form for signing up
     end
 
     post '/signup' do #uses data from new_user.erb
         @user = User.create(username: params[:username], password_digest: params[:password])
         #need to create session hash
         session[:user_id] = @user.id
-        redirect to "user/entries" 
+        redirect to "/user/home" 
     end
 
     #show all entries
     #add button to lead to adding new entry
     get '/entries' do
-        id = session[:user_id] 
-        @entries = Entry.where('user.id == #{id}').order(:date)
+        user = User.find_by(id: session[:user_id]) 
+        @entries = user.entries.order(:date_of_tasks)
         #how to specify the id that I want to look for?
-        erb :"users/entries" 
+        erb :"/users/entries" 
     end
  
-    get '/organizers/new' do
-        erb :"new-forms/new_organizer"
+    get '/organizers/new' do #doesnt load page properly
+        erb :"/new_forms/new_organizer"
     end
 
     post '/organizers' do
@@ -54,7 +58,7 @@ class Application < Sinatra::Base
     #show all organizers
     #add button to lead to adding new organizer
     get '/organizers' do 
-        erb :"user/organizers"
+        erb :"/user/organizers"
     end
 
     #add rubytopia; get '/playgame'??
