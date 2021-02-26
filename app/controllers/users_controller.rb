@@ -30,6 +30,15 @@ class UsersController < ApplicationController
         redirect to "/user/logged_in_home" 
     end
 
+    get "/user/logged_in_home" do
+        if session[:user_id]
+            @user = User.find_by(id: session[:user_id])
+            erb :"/user/logged_in_home"
+        else 
+            redirect to "/login"
+        end 
+    end
+
     get '/logout' do 
         session.clear
         redirect '/login'
