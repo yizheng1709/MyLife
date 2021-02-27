@@ -3,23 +3,29 @@
     
    <p class="p11"> 
        <img src="/images/piplup.gif" alt="piplup" class="at_date" style="width:3%; length:3%">
-   Tasks for: <%= @organizer.date_of_tasks %> 
+            Tasks for: <%= @organizer.date_of_tasks %> 
        <img src="/images/mudkip.gif" alt="piplup" class="at_date" style="width:3%; length:3%">
     </p>
-    <br> <br>
+                    <br> <br>
          <% @organizer.tasks.each do |task| %>
-            <p class="p7"> <%= task.task_name %> </p> <br>
+            <p class="p7"> 
+            <input type="checkbox" id="task<%=task.id%>" name="task<%=task.id%>" value="<%=task.task_name%>">
+            <label for="task<%=task.id%>"> <%= task.task_name %> </label>
+            <%= task.task_name %> 
+            </p> <br>
         <% end %>
-    <br> <br> <br>
+                    <br> <br> <br>
     <div class="div1">
-    <a href="/organizers/<%=@organizer.id%>/edit"> <p class="p4"> 
-    <button type="button" value="Edit Organizer" class="front_button"> 
-    Edit Organizer </button> </p> </a> <br>
+        <a href="/organizers/<%=@organizer.id%>/edit"> <p class="p4"> 
+        <button type="button" value="Edit Organizer" class="front_button"> 
+        Edit Organizer </button> </p> </a> <br>
 
-    <form method="post" action="/organizers/<%=@organizer.id%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-     <p class="p4"> 
-    <input type="submit" value="Delete Organizer" class="front_button"> 
-     </p> </form> <br> <br>
+        <form method="post" action="/organizers/<%=@organizer.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <p class="p4"> 
+        <input type="submit" value="Delete Organizer" class="front_button"> 
+        </p> 
+        </form> 
+        <br> <br>
     </div>
 <% end %>

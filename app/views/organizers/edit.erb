@@ -8,10 +8,11 @@
 <br> <br>
   <p class="p7">Edit your tasks:</p>
 <br> <br>
+
     <ul style="list-style-type:none;">
-    <% if !@organizers.tasks.empty? %>
-        <%= @organizers.tasks.each do |task| %>
-            <li> <input type="checkbox" name="#{task.id}"> <%= task.task_name % </li> 
+    <% if @organizers %>
+        <% @organizers.tasks.each do |task| %>
+            <li> <input type="text" name="<%= task.id %>" value="<%= task.task_name %>"> </input></li> 
         <% end %>
     <% end %>
     </ul>

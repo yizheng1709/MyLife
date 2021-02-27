@@ -14,6 +14,7 @@ class OrganizersController < ApplicationController
         if @organizer.id
             task_array = params[:tasks].delete_if {|task| task[:task_name].strip == "" }
             task_array.each {|task| @organizer.tasks.create(task_name: task[:task_name].strip) }
+            ## ^ can call @organizer.tasks and will list all tasks related
             redirect to "/organizers/#{@organizer.id}"
         else
              #error handling if there is no date for the organizer
@@ -22,7 +23,7 @@ class OrganizersController < ApplicationController
              erb :"/organizers/new_organizer"
         end 
     end
-
+#is it necessary to let other users see what another user has?
     get '/organizers/:id' do 
         redirect_if_not_logged_in
         @organizer = find_organizer
@@ -32,10 +33,13 @@ class OrganizersController < ApplicationController
     get '/organizers/:id/edit' do
         redirect_if_not_logged_in
         @organizer = find_organizer
-        if @organizer.user_id == current_user
+        # binding.pry
+        if @organizer.user_id == current_user.id
+            # binding.pry
             erb :"/organizers/edit"
         else 
             redirect "/organizers/#{@organizer.id}"
+        end 
     end
 
     #show all organizers
