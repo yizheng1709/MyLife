@@ -1,8 +1,8 @@
-<%= @organizer.date_of_tasks %>
-<br>
-<br>
-<% @organizer.tasks.each do |task| %>
-<%= task.task_name %>
+<% if @organizer.date_of_tasks %>
+    <%= @organizer.date_of_tasks %>
+    <br>
+    <br>
+        <% @organizer.tasks.each do |task| %>
+            <%= task.task_name %> <br>
+        <% end %>
 <% end %>
-
-no tasks

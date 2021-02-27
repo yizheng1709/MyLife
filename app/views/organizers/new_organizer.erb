@@ -3,20 +3,20 @@
 <form method="post" action="/organizers">
 
     <p class="p7"> Which date is this task list for?</p>
-    <input type="date" name="date_of_tasks">
+    <input type="date" class="organizer_date" name="date_of_tasks">
 <br> <br>
   <p class="p7">Input your tasks:</p>
-<br> <br>
+<br> 
     <ul style="list-style-type:none;">
-        <li> <input type="text" name="tasks[][task_name]"> </li> 
+        <li> <input class="organizer_input" type="text" name="tasks[][task_name]"> </li> 
 <br> 
-        <li> <input type="text" name="tasks[][task_name]"> </li>
+        <li> <input class="organizer_input" type="text" name="tasks[][task_name]"> </li>
 <br> 
-        <li> <input type="text" name="tasks[][task_name]"> </li>
+        <li> <input class="organizer_input" type="text" name="tasks[][task_name]"> </li>
 <br> 
-        <li> <input type="text" name="tasks[][task_name]"> </li>
+        <li> <input class="organizer_input" type="text" name="tasks[][task_name]"> </li>
 <br> 
-        <li> <input type="text" name="tasks[][task_name]"> </li>
+        <li> <input class="organizer_input" type="text" name="tasks[][task_name]"> </li>
     </ul>
 
     <input type="submit" value="Submit" class="front_button">

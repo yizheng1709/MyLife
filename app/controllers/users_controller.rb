@@ -8,8 +8,10 @@ class UsersController < ApplicationController
     
     post "/login" do
         @user = User.find_by(username: params[:username])
+        # binding.pry
         if @user && @user.authenticate(params[:password])
-          in_session = @user.id
+            # binding.pry
+          session[:user_id] = @user.id
           redirect "/users/logged_in_home"
         else 
           erb :failed_login
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
     end
 
     get '/signup' do
-        if in_session
+        if session[:user_id]
             redirect "/users/logged_in_home"
             #cant let current users sign up again if they are in session
         end
