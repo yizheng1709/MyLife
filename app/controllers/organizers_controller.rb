@@ -1,7 +1,7 @@
 class OrganizersController < ApplicationController
 
     get '/organizers/new' do #doesnt load page properly
-        erb :"/new_forms/new_organizer"
+        erb :"/organizers/new"
     end
 
     post '/organizers' do
@@ -16,6 +16,6 @@ class OrganizersController < ApplicationController
     #add button to lead to adding new organizer #done
     get '/organizers' do 
         
-        erb :"/user/organizers"
+        erb :"/organizers/organizers"
     end
 end
