@@ -24,4 +24,12 @@ class OrganizersController < ApplicationController
         
         erb :"/organizers"
     end
+
+    patch '/organizers/:id' do
+        
+    end
+
+    delete '/organizers/:id' do
+
+    end
 end

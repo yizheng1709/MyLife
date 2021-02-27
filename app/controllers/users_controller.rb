@@ -26,9 +26,12 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do #uses data from new_user.erb
-        @user = User.create(username: params[:username], password: params[:password])
-        session[:user_id] = @user.id
-        redirect to "/users/logged_in_home" 
+        if validates_uniqueness_of(params[:username])
+            @user = User.create(username: params[:username], password: params[:password])
+            in_session = @user.id
+            redirect to "/users/logged_in_home"
+        else 
+            redirect to "/signup"
     end
 
     get "/user/logged_in_home" do
