@@ -9,18 +9,28 @@ class OrganizersController < ApplicationController
     post '/organizers' do
         redirect_if_not_logged_in
         @organizer = current_user.organizers.create(date_of_tasks: params[:date_of_tasks])
-        task_array = params[:tasks].delete_if {|task_name| task_name == "" }
-        task_array = task_array.collect{|task_name| @organizers.tasks.create(task_name) }
-        redirect to "organizers/#{@organizer.id}"
+
+        if @organizer.id
+            task_array = params[:tasks].delete_if {|task| task[:task_name].strip == "" }
+            # binding.pry
+            task_array.each {|task| @organizer.tasks.create(task_name: task[:task_name].strip) }
+            redirect to "organizers/#{@organizer.id}"
+        end 
+    end
+
+    get '/organizers/:id' do 
+        redirect_if_not_logged_in
+        
+        erb :"/organizers/#{@organizer.id}"
     end
 
     #show all organizers
     #add button to lead to adding new organizer #done
     get '/organizers' do
-         redirect_if_not_logged_in
+        redirect_if_not_logged_in
     
         
-        erb :"/organizers"
+        erb :"/organizers/organizers"
     end
 
     patch '/organizers/:id/edit' do

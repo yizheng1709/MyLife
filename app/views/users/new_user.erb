@@ -4,15 +4,15 @@
 </audio>
 </div>
 <br><br>
-<div class="login">
-<form method="post" action="/signup"> 
 
-<% if !@messages.empty? %>
+<% if !@messages.nil? || session[:user_id].nil? %>
     <% @messages.each do |message| %>
       <p class="p7">  <%= "#{message}."%> </p> <br>
     <% end %>
 <% end %>
 
+<div class="login">
+<form method="post" action="/signup"> 
 <p class="p3"> <label for="username"> Create Your Username </label> </p>
 <input type="text" name="username">
 <br> <br>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
           in_session = @user.id
-          redirect "/user/logged_in_home"
+          redirect "/users/logged_in_home"
         else 
           erb :failed_login
         end
@@ -28,19 +28,19 @@ class UsersController < ApplicationController
         @user = User.create(username: params[:username], password: params[:password])
         @messages = @user.errors.full_messages
         if @user.id && @messages.empty?
-            in_session = @user.id
+            session[:user_id] = @user.id
             redirect to "/users/logged_in_home"
         else 
             redirect to "/signup"
         end 
     end
 
-    get "/user/logged_in_home" do
+    get "/users/logged_in_home" do
         redirect_if_not_logged_in
 
-        if in_session
+        if session[:user_id]
             @user = current_user
-            erb :"/user/logged_in_home"
+            erb :"/users/logged_in_home"
         else 
             redirect to "/login"
         end 

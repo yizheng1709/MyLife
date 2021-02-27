@@ -1,0 +1,6 @@
+<%= @organizer.date_of_tasks %>
+<br>
+<br>
+<% @organizer.tasks.each do |task| %>
+<%= task.task_name %>
+<% end %>

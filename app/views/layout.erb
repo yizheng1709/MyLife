@@ -17,12 +17,11 @@
     <p class="p1"> Would you like to record your life? </p>
 </div>
 <br><br>
+
+<% if session[:user_id] %>
 <nav class="navigation-bar">
 
 <ul class="nav justify-content-center">
-<li class="nav-item">
-    <a class="nav-link" href="/login">Log In</a>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="/entries">Journal Entries</a>
   </li>
@@ -37,6 +36,7 @@
   </li>
 </ul>
 </nav>
+<% end %>
 
 </header>
 <br> <br>
