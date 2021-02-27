@@ -7,6 +7,12 @@
 <div class="login">
 <form method="post" action="/signup"> 
 
+<% if current_user && !@messages.empty? %>
+    <% @messages.each do |message| %>
+      <p class="p7">  <%= "#{message}."%> </p> <br>
+    <% end %>
+<% end %>
+
 <p class="p3"> <label for="username"> Create Your Username </label> </p>
 <input type="text" name="username">
 <br> <br>
