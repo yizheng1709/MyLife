@@ -1,10 +1,14 @@
 class OrganizersController < ApplicationController
 
-    get '/organizers/new' do #doesnt load page properly
-        erb :"/organizers/new"
+    get '/organizers/new' do 
+        #doesnt load page properly
+        redirect_if_not_logged_in
+        erb :"/organizers/new_organizer"
     end
 
     post '/organizers' do
+        redirect_if_not_logged_in
+
         # @organizer = Organizer.create(date_of_tasks: params[:date_of_tasks], tasks: params[:tasks])
         @organizer = Organizer.create(date_of_tasks: params[:date_of_tasks])
         task_array = params[:tasks].delete_if {|task_name| task_name == "" }
@@ -14,8 +18,10 @@ class OrganizersController < ApplicationController
 
     #show all organizers
     #add button to lead to adding new organizer #done
-    get '/organizers' do 
+    get '/organizers' do
+         redirect_if_not_logged_in
+    
         
-        erb :"/organizers/organizers"
+        erb :"/organizers"
     end
 end

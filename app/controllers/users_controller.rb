@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     end
     
     post "/login" do
+
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
           session[:user_id] = user.id
@@ -31,6 +32,8 @@ class UsersController < ApplicationController
     end
 
     get "/user/logged_in_home" do
+        redirect_if_not_logged_in
+
         if in_session
             @user = current_user
             erb :"/user/logged_in_home"
