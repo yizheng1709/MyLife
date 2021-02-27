@@ -7,7 +7,7 @@
 <div class="login">
 <form method="post" action="/signup"> 
 
-<% if current_user && !@messages.empty? %>
+<% if !@messages.empty? %>
     <% @messages.each do |message| %>
       <p class="p7">  <%= "#{message}."%> </p> <br>
     <% end %>

@@ -1,0 +1,23 @@
+<div class="div4">
+
+<form method="post" action="/organizers<%= @organizer.id %>/edit">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+
+    <p class="p7">The tasks for <%= @organizer.date_of_tasks %>: </p>
+<br> <br>
+  <p class="p7">Edit your tasks:</p>
+<br> <br>
+    <ul style="list-style-type:none;">
+    <% if !@organizers.tasks.empty? %>
+        <%= @organizers.tasks.each do |task| %>
+            <li> <input type="checkbox" name="#{task.id}"> <%= task.task_name % </li> 
+        <% end %>
+    <% end %>
+    </ul>
+
+    <input type="submit" value="Submit" class="front_button">
+
+</form>
+
+</div>

@@ -7,10 +7,9 @@ class UsersController < ApplicationController
     end
     
     post "/login" do
-
-        user = User.find_by(username: params[:username])
-        if user && user.authenticate(params[:password])
-          session[:user_id] = user.id
+        @user = User.find_by(username: params[:username])
+        if @user && @user.authenticate(params[:password])
+          in_session = @user.id
           redirect "/user/logged_in_home"
         else 
           erb :failed_login
@@ -28,11 +27,10 @@ class UsersController < ApplicationController
     post '/signup' do #uses data from new_user.erb
         @user = User.create(username: params[:username], password: params[:password])
         @messages = @user.errors.full_messages
-        if @user.id
+        if @user.id && @messages.empty?
             in_session = @user.id
             redirect to "/users/logged_in_home"
         else 
-            @user.errors
             redirect to "/signup"
         end 
     end

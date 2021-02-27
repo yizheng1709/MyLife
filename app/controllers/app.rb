@@ -11,11 +11,6 @@ class ApplicationController < Sinatra::Base
         erb :index
     end
 
-    #show all entries
-    #add button to lead to adding new entry
- 
-
-    #add rubytopia; get '/playgame'??
     get '/playgame' do 
         erb :playgame 
     end
