@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     get "/login" do
-        if session[:user_id]
+        if in_session
             erb :"/user/logged_in_home"
         end
         erb :index
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     get '/sign-up' do
-        if session[:user_id]
+        if in_session
             redirect "/users/logged_in_home"
             #cant let current users sign up again if they are in session
         end
@@ -31,8 +31,8 @@ class UsersController < ApplicationController
     end
 
     get "/user/logged_in_home" do
-        if session[:user_id]
-            @user = User.find_by(id: session[:user_id])
+        if in_session
+            @user = current_user
             erb :"/user/logged_in_home"
         else 
             redirect to "/login"

@@ -33,8 +33,12 @@ class ApplicationController < Sinatra::Base
             object.user == current_user
         end
 
+        def in_session
+            session[:user_id]
+        end
+
         def find_collection
-            
+
         end
     end
 end
