@@ -1,11 +1,11 @@
 
 <div style="width:300px; margin:auto; position:relative;">
-<audio controls loop=true src="music/Moldau.mp3" type="audio/mp3">
+<audio controls loop=true src="/music/Moldau.mp3" type="audio/mp3">
 </audio>
 </div>
 <br><br>
 
-<% if !@messages.nil? || session[:user_id].nil? %>
+<% if @messages %>
     <% @messages.each do |message| %>
       <p class="p7">  <%= "#{message}."%> </p> <br>
     <% end %>

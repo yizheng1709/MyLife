@@ -20,8 +20,8 @@ class OrganizersController < ApplicationController
 
     get '/organizers/:id' do 
         redirect_if_not_logged_in
-        
-        erb :"/organizers/#{@organizer.id}"
+        @organizer = Organizer.find_by(id: params[:id])
+        erb :"/organizers/show"
     end
 
     #show all organizers
