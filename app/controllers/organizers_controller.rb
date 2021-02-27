@@ -25,13 +25,17 @@ class OrganizersController < ApplicationController
 
     get '/organizers/:id' do 
         redirect_if_not_logged_in
-        @organizer = Organizer.find_by(id: params[:id])
+        @organizer = find_organizer
         erb :"/organizers/show"
     end
 
     get '/organizers/:id/edit' do
         redirect_if_not_logged_in
-        erb :"/organizers/edit"
+        @organizer = find_organizer
+        if @organizer.user_id == current_user
+            erb :"/organizers/edit"
+        else 
+            redirect "/organizers/#{@organizer.id}"
     end
 
     #show all organizers
@@ -44,10 +48,12 @@ class OrganizersController < ApplicationController
     patch '/organizers/:id/edit' do
         redirect_if_not_logged_in
         #id will come from the form's name attribute
-        @organizer = Organizer.find_by(id: params[:id])
-        # @user = current_user 
-        @organizer.tasks.each do |task|
-            #how to update each one
+        @organizer = find_organizer
+        # @user = current_user
+         #edit form should have id of each existing id in nested array
+        params[:tasks].each do |id|
+            task = Task.find_by(id)
+            task.update
         end
         redirect to "/organizers/#{@organizer.id}"
     end
