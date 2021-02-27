@@ -29,6 +29,11 @@ class OrganizersController < ApplicationController
         erb :"/organizers/show"
     end
 
+    get '/organizers/:id/edit' do
+        redirect_if_not_logged_in
+        erb :"/organizers/edit"
+    end
+
     #show all organizers
     #add button to lead to adding new organizer #done
     get '/organizers' do
