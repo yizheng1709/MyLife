@@ -1,8 +1,13 @@
+    <br> <br>
 <% if @organizer.date_of_tasks %>
-    <%= @organizer.date_of_tasks %>
-    <br>
-    <br>
-        <% @organizer.tasks.each do |task| %>
-            <%= task.task_name %> <br>
+    
+   <p class="p11"> 
+       <img src="/images/piplup.gif" alt="piplup" class="at_date" style="width:3%; length:3%">
+   Tasks for: <%= @organizer.date_of_tasks %> 
+       <img src="/images/mudkip.gif" alt="piplup" class="at_date" style="width:3%; length:3%">
+    </p>
+    <br> <br>
+         <% @organizer.tasks.each do |task| %>
+            <p class="p7"> <%= task.task_name %> </p> <br>
         <% end %>
 <% end %>
