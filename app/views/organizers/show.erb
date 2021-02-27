@@ -10,4 +10,14 @@
          <% @organizer.tasks.each do |task| %>
             <p class="p7"> <%= task.task_name %> </p> <br>
         <% end %>
+    <br> <br> <br>
+    <div class="div1">
+    <a href="/organizers/#{@organizer.id}/edit"> <p class="p4"> 
+    <button type="button" value="Edit Organizer" class="front_button"> 
+    Edit Organizer </button> </p> </a> <br>
+
+    <a href="/organizers/#{@organizer.id}/delete"> <p class="p4"> 
+    <button type="button" value="Edit Organizer" class="front_button"> 
+    Delete Organizer </button> </p> </a> <br> <br>
+    </div>
 <% end %>
