@@ -54,12 +54,12 @@ class OrganizersController < ApplicationController
 
     delete '/organizers/:id/delete' do
         redirect_if_not_logged_in
-        @organizer = Organizer.find_by(id: params[:id])
+        @organizer = find_organizer
         if @organizer.user_id == current_user.id
             @organizer.destroy
             redirect to "/organizers"
         else
-            redirect "/organizers/#{organizer.id}"
+            redirect "/organizers"
         end
 
     end

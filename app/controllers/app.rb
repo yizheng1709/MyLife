@@ -32,8 +32,8 @@ class ApplicationController < Sinatra::Base
             session[:user_id]
         end
 
-        def find_collection
-
+        def find_organizer
+            Organizer.find_by(id: params[:id])
         end
     end
 end
