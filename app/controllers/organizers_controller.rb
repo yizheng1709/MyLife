@@ -8,13 +8,18 @@ class OrganizersController < ApplicationController
 
     post '/organizers' do
         redirect_if_not_logged_in
+        
         @organizer = current_user.organizers.create(date_of_tasks: params[:date_of_tasks])
 
         if @organizer.id
             task_array = params[:tasks].delete_if {|task| task[:task_name].strip == "" }
-            # binding.pry
             task_array.each {|task| @organizer.tasks.create(task_name: task[:task_name].strip) }
-            redirect to "organizers/#{@organizer.id}"
+            redirect to "/organizers/#{@organizer.id}"
+        else
+             #error handling if there is no date for the organizer
+            #  binding.pry
+             @messages = @organizer.errors.full_messages 
+             erb :"/organizers/new_organizer"
         end 
     end
 
@@ -28,8 +33,6 @@ class OrganizersController < ApplicationController
     #add button to lead to adding new organizer #done
     get '/organizers' do
         redirect_if_not_logged_in
-    
-        
         erb :"/organizers/organizers"
     end
 

@@ -1,5 +1,14 @@
 <div class="div4">
 
+<br> <br>
+<% if @messages %>
+<p class="p10"> There was an error saving your list. </p>
+        <% @messages.each do |message| %>
+              <p class="p10"> <%= message %>. </p> <br>
+        <% end %>
+        <br> 
+<% end %>
+
 <form method="post" action="/organizers">
 
     <p class="p7"> Which date is this task list for?</p>
@@ -24,3 +33,4 @@
 </form>
 
 </div>
+<br> <br> <br> <br>
