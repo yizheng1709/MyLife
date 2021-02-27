@@ -16,18 +16,18 @@ class UsersController < ApplicationController
         end
     end
 
-    get '/sign-up' do
+    get '/signup' do
         if in_session
             redirect "/users/logged_in_home"
             #cant let current users sign up again if they are in session
         end
-        erb :"/new_forms/new_user" #shows form for signing up
+        erb :"/users/new_user" #shows form for signing up
     end
 
     post '/signup' do #uses data from new_user.erb
         @user = User.create(username: params[:username], password: params[:password])
         session[:user_id] = @user.id
-        redirect to "/user/logged_in_home" 
+        redirect to "/users/logged_in_home" 
     end
 
     get "/user/logged_in_home" do
