@@ -45,7 +45,7 @@ class OrganizersController < ApplicationController
     #show all organizers
     get '/organizers' do
         redirect_if_not_logged_in
-        @organizers = current_user.organizers
+        @organizers = current_user.organizers.order("date_of_tasks DESC")
         # binding.pry
         erb :"/organizers/organizers"
     end
