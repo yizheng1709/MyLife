@@ -10,7 +10,7 @@ class OrganizersController < ApplicationController
         redirect_if_not_logged_in
         
         @organizer = current_user.organizers.create(date_of_tasks: params[:date_of_tasks])
-
+# binding.pry
         if @organizer.id
             task_array = params[:tasks].delete_if {|task| task[:task_name].strip == "" }
             task_array.each {|task| @organizer.tasks.create(task_name: task[:task_name].strip) }
