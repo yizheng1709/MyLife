@@ -27,6 +27,7 @@ class OrganizersController < ApplicationController
     get '/organizers/:id' do 
         redirect_if_not_logged_in
         @organizer = find_organizer
+        # binding.pry
         erb :"/organizers/show"
     end
 

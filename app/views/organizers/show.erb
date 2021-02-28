@@ -15,8 +15,7 @@
                     <br> <br>
          <% @organizer.tasks.each do |task| %>
             <p class="p7"> 
-            <input type="checkbox" id="task<%=task.id%>" name="task<%=task.id%>" value="<%=task.task_name%>">
-            <label for="task<%=task.id%>"> <%= task.task_name %> </label>
+            <%= task.task_name %> 
             </p> <br>
         <% end %>
                     <br> <br> <br>
