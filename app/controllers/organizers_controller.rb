@@ -43,10 +43,10 @@ class OrganizersController < ApplicationController
     end
 
     #show all organizers
-    #add button to lead to adding new organizer #done
     get '/organizers' do
         redirect_if_not_logged_in
-        @organizer = find_organizer
+        @organizers = current_user.organizers
+        # binding.pry
         erb :"/organizers/organizers"
     end
 
