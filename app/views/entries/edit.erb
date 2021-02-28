@@ -1,0 +1,33 @@
+<br>
+<div style="width:300px; margin:auto; position:relative;">
+<audio controls autoplay loop=true preload src="/music/everyheart.mp3" type="audio/mp3">
+</audio>
+</div>
+
+<div class="div4">
+
+<br> <br>
+<% if @messages %>
+<p class="p10"> There was an error saving your journal. </p>
+        <% @messages.each do |message| %>
+              <p class="p10"> <%= message %>. </p> <br>
+        <% end %>
+        <br> 
+<% end %>
+
+<form method="post" action="/entries">
+
+    <p class="p7"> Which date is this entry for?</p>
+    <input type="date" class="organizer_date" name="date">
+<br> <br>
+  <p class="p7">Write to your heart's content:</p>
+<br> 
+
+        <li> <input class="entry_input" type="text" name="content"> </li> 
+    
+    <input type="submit" value="Submit" class="front_button">
+
+</form>
+
+</div>
+<br> <br> <br> <br>

@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
         @entry = current_user.entries.create(date: params[:date], title: params[:title], content: params[:content])
         # binding.pry
         if @entry.id
-            redirect to "/organizers/#{@organizer.id}"
+            redirect to "/entries/#{@entry.id}"
         else
              #error handling if there is no date for the organizer
             #  binding.pry
