@@ -46,6 +46,7 @@ class OrganizersController < ApplicationController
     #add button to lead to adding new organizer #done
     get '/organizers' do
         redirect_if_not_logged_in
+        @organizer = find_organizer
         erb :"/organizers/organizers"
     end
 
