@@ -1,7 +1,6 @@
 class OrganizersController < ApplicationController
 #add water drinking and average Oz drank per week or month if theres time
     get '/organizers/new' do 
-        #doesnt load page properly
         redirect_if_not_logged_in
         erb :"/organizers/new_organizer"
     end
