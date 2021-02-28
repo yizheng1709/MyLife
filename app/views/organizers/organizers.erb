@@ -9,16 +9,24 @@
 <div class="div3">
 
     <form method="get" action="/organizers/new">
-    <a href="/organizers/new"> <p class="p6"> 
+    <p class="p6"> <a href="/organizers/new"> 
     <button type="button" value="Add New Organizer" class="organizer_button">
     Add New Organizer
-    </button></p></a>
+    </button></a> </p>
     </form>
 </div>
 
 <div class="div1">
 <br>
-will list all organizers soon!
 
+<% @organizers.each do |organizer| %>
+    <p class="p13">
+    <a href="/organizers/<%=organizer.id%>">
+    <%= organizer.date_of_tasks %> 
+    </a>
+    </p> 
+<% end %>
 
 </div>
+
+<br> <br> <br>
