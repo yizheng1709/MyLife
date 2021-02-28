@@ -1,6 +1,6 @@
 
 <div style="width:300px; margin:auto; position:relative;">
-    <audio controls loop=true src="/music/temple.mp3" type="audio/mp3">
+    <audio controls autoplay loop=true src="/music/temple.mp3" type="audio/mp3">
     </audio>
 </div>
 
@@ -20,7 +20,7 @@
 <br>
 
 <% @organizers.each do |organizer| %>
-    <p class="p13">
+    <p>
     <a href="/organizers/<%=organizer.id%>" class="date_link">
     <%= organizer.date_of_tasks %> 
     </a>
