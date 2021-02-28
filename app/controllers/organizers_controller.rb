@@ -8,7 +8,7 @@ class OrganizersController < ApplicationController
 
     post '/organizers' do
         redirect_if_not_logged_in
-        
+        #REMEMBER TO ERROR HANDLE IF USER ALREADY HAS AN EXISTING ORGANIZER WITH DATE_OF_TASKS
         @organizer = current_user.organizers.create(date_of_tasks: params[:date_of_tasks])
 # binding.pry
         if @organizer.id
