@@ -4,7 +4,7 @@
 </audio>
 </div>
 
-<div class="div4">
+<div class="div1">
 
 <br> <br>
 <% if @messages %>
@@ -15,14 +15,17 @@
         <br> 
 <% end %>
 
-<form method="post" action="/entries">
+<form method="post" action="/entries/<%=@entry.id%>/edit">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
 
     <p class="p7"> The entry for <%= @entry.date %> </p>
 <br> <br>
   <p class="p7">Make any necessary changes:</p>
 <br> 
 
-    <textarea required type="text" class="entry_input" name="content" rows="20" cols="150" ><% @entry.content%></textarea> 
+    <textarea type="text" class="entry_input" name="content" rows="20" cols="150" >
+    <%= @entry.content.gsub(/<br>/, ' ') %></textarea> 
     <br> <br>
     <input type="submit" value="Submit" class="front_button">
 

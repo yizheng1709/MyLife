@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
     post '/entries' do
         redirect_if_not_logged_in
         #REMEMBER TO ERROR HANDLE IF USER ALREADY HAS AN EXISTING JOURNAL WITH DATE_OF_TASKS
-        @entry = current_user.entries.create(date: params[:date], content: params[:content].gsub(/\n/, '<br/>'))
+        @entry = current_user.entries.create(date: params[:date], content: params[:content].gsub(/\n/, '<br>'))
         # binding.pry
         if @entry.id
             redirect to "/entries/#{@entry.id}"
@@ -22,7 +22,6 @@ class EntriesController < ApplicationController
     get '/entries/:id' do 
         redirect_if_not_logged_in
         @entry = find_entry
-        # binding.pry
         erb :"/entries/show"
     end
     
@@ -47,23 +46,21 @@ class EntriesController < ApplicationController
     patch '/entries/:id/edit' do
         redirect_if_not_logged_in
         #id will come from the form's name attribute
-        @entry = find_entry
-        params[:tasks][0].each do |id, taskname|
-            # binding.pry
-            task = Task.find_by(id: id)
-            task.update(task_name: taskname)
-        end
-        redirect to "/entries/#{@entry.id}"
+        entry = find_entry
+        if @entry.user_id == current_user.id
+            entry.update(content: params[:content])
+        end 
+        redirect to "/entries/#{entry.id}"
     end
 
-    delete '/organizers/:id/delete' do
+    delete '/entries/:id/delete' do
         redirect_if_not_logged_in
-        @organizer = find_organizer
-        if @organizer.user_id == current_user.id
-            @organizer.destroy
-            redirect to "/organizers"
+        @entry = find_entry
+        if @entry.user_id == current_user.id
+            @entry.destroy
+            redirect to "/entries"
         else
-            redirect "/organizers"
+            redirect "/entries"
         end
 
     end
