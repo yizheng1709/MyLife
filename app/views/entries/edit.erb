@@ -17,13 +17,12 @@
 
 <form method="post" action="/entries">
 
-    <p class="p7"> Which date is this entry for?</p>
-    <input type="date" class="organizer_date" name="date">
+    <p class="p7"> The entry for <%= @entry.date %> </p>
 <br> <br>
-  <p class="p7">Write to your heart's content:</p>
+  <p class="p7">Make any necessary changes:</p>
 <br> 
 
-        <li> <input class="entry_input" type="text" name="content"> </li> 
+    <textarea required type="text" class="entry_input" name="content" rows="20" cols="150" value="<%= @entry.content%>"> </textarea> 
     
     <input type="submit" value="Submit" class="front_button">
 
