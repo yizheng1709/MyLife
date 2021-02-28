@@ -6,16 +6,12 @@ class EntriesController < ApplicationController
 
     post '/entries' do
         redirect_if_not_logged_in
-        #REMEMBER TO ERROR HANDLE IF USER ALREADY HAS AN EXISTING JOURNAL WITH DATE_OF_TASKS
         @entry = current_user.entries.create(date: params[:date], content: params[:content].gsub(/\n/, '<br>'))
-        # binding.pry
         if @entry.id
             redirect to "/entries/#{@entry.id}"
         else
-             #error handling if there is no date for the organizer
-            #  binding.pry
-             @messages = @entry.errors.full_messages 
-             erb :"/entries/new_entry"
+            @messages = @entry.errors.full_messages 
+            erb :"/entries/new_entry"
         end 
     end
 
@@ -34,9 +30,7 @@ class EntriesController < ApplicationController
     get '/entries/:id/edit' do
         redirect_if_not_logged_in
         @entry = find_entry
-        # binding.pry
         if @entry.user_id == current_user.id
-            # binding.pry
             erb :"/entries/edit"
         else 
             redirect "/entries/#{@entry.id}"
@@ -45,12 +39,11 @@ class EntriesController < ApplicationController
 
     patch '/entries/:id/edit' do
         redirect_if_not_logged_in
-        #id will come from the form's name attribute
-        entry = find_entry
+        @entry = find_entry
         if @entry.user_id == current_user.id
-            entry.update(content: params[:content])
+            @entry.update(content: params[:content].gsub(/\n/, "<br>"))
         end 
-        redirect to "/entries/#{entry.id}"
+            redirect to "/entries/#{@entry.id}"
     end
 
     delete '/entries/:id/delete' do
@@ -62,6 +55,6 @@ class EntriesController < ApplicationController
         else
             redirect "/entries"
         end
-
     end
+
 end

@@ -24,8 +24,7 @@
   <p class="p7">Make any necessary changes:</p>
 <br> 
 
-    <textarea type="text" class="entry_input" name="content" rows="20" cols="150" >
-    <%= @entry.content.gsub(/<br>/, ' ') %></textarea> 
+    <textarea type="text" class="entry_input" name="content" rows="20" cols="150" ><%= @entry.content.gsub(/<br>/, '') %></textarea> 
     <br> <br>
     <input type="submit" value="Submit" class="front_button">
 
