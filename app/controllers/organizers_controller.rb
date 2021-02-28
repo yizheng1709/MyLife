@@ -56,9 +56,12 @@ class OrganizersController < ApplicationController
         @organizer = find_organizer
         # @user = current_user
          #edit form should have id of each existing id in nested array
-        params[:tasks].each do |id|
-            task = Task.find_by(id)
-            task.update
+        #  binding.pry
+        params[:tasks][0].each do |id, taskname|
+            # binding.pry
+            task = Task.find_by(id: id)
+            task.update(task_name: taskname)
+            # binding.pry
         end
         redirect to "/organizers/#{@organizer.id}"
     end

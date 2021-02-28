@@ -8,7 +8,7 @@
 
 <div class="div4">
 
-<form method="post" action="/organizers<%= @organizer.id %>/edit">
+<form method="post" action="/organizers/<%= @organizer.id %>/edit">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
 
@@ -20,7 +20,7 @@
     <ul style="list-style-type:none;">
     <% if @organizer %>
         <% @organizer.tasks.each do |task| %>
-            <li> <input type="text" name="<%= task.id %>" value="<%= task.task_name %>"> </input></li> 
+            <li> <input class="organizer_input" type="text" name="tasks[]<%= task.id %>" value="<%= task.task_name %>"> </input></li> <br>
         <% end %>
     <% end %>
     </ul>
@@ -30,3 +30,4 @@
 </form>
 
 </div>
+<br> <br> <br> <br?>
