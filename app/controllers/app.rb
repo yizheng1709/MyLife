@@ -36,5 +36,9 @@ class ApplicationController < Sinatra::Base
         def find_organizer
             Organizer.find_by(id: params[:id])
         end
+
+        def find_entry
+            Entry.find_by(id: params[:id])
+        end
     end
 end

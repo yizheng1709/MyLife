@@ -18,6 +18,13 @@ class EntriesController < ApplicationController
              erb :"/entries/new_entry"
         end 
     end
+
+    get '/entries/:id' do 
+        redirect_if_not_logged_in
+        @entry = find_entry
+        # binding.pry
+        erb :"/entries/show"
+    end
     
     get '/entries' do
         redirect_if_not_logged_in

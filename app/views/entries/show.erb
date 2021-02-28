@@ -1,0 +1,36 @@
+<br>
+<div style="width:300px; margin:auto; position:relative;">
+<audio controls autoplay loop=true preload src="/music/howl.mp3" type="audio/mp3">
+</audio>
+</div>
+    
+    <br> <br>
+<% if @entry.date %>
+    
+   <p class="p11"> 
+       <img src="/images/piplup.gif" alt="piplup" class="at_date" style="width:3%; length:3%">
+            Entry for: <%= @entry.date %> 
+       <img src="/images/mudkip.gif" alt="piplup" class="at_date" style="width:3%; length:3%">
+    </p>
+                    <br> <br>
+         <%= @entry.content %>
+        <% end %>
+                    <br> <br> <br>
+    <div class="div1">
+        <a href="/entries"> <p class="p4"> 
+        <button type="button" value="All Entries" class="front_button"> 
+        All Entries </button> </p> </a> <br>
+
+        <a href="/entries/<%=@entry.id%>/edit"> <p class="p4"> 
+        <button type="button" value="Edit Entry" class="front_button"> 
+        Edit Entry </button> </p> </a> <br>
+
+        <form method="post" action="/entries/<%=@entry.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <p class="p4"> 
+        <input type="submit" value="Delete Entry" class="front_button"> 
+        </p> 
+        </form> 
+        <br> <br>
+    </div>
+<% end %>
