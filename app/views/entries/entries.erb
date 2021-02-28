@@ -1,9 +1,29 @@
 
 <div style="width:300px; margin:auto; position:relative;">
-    <audio controls autoplay loop=true src="/music/Dance.mp3" type="audio/mp3">
+    <audio controls autoplay loop=true src="/music/simpleclean.mp3" type="audio/mp3">
     </audio>
 </div>
+<br> <br>
+<div class="div3">
+
+    <p class="p6"> <a href="/entries/new"> 
+    <button type="button" value="Add New Entry" class="organizer_button">
+    Add New Entry
+    </button></a> </p>
+</div>
+
+<div class="div1">
+<br>
 
 <% @entries.each do |entry| %>
+<p>
+    <a href="/entries/<%=entry.id%>" class="date_link">
+    <%= entry.date %> 
+    </a>
+    </p> 
 <% end %>
+
+</div>
+
+<br> <br> <br>
 
