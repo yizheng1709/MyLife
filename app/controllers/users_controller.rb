@@ -29,11 +29,12 @@ class UsersController < ApplicationController
     post '/signup' do #uses data from new_user.erb
         @user = User.create(username: params[:username], password: params[:password])
         @messages = @user.errors.full_messages
+        # binding.pry
         if @user.id && @messages.empty?
             session[:user_id] = @user.id
             redirect to "/users/logged_in_home"
         else 
-            redirect to "/signup"
+            erb :"users/new_user"
         end 
     end
 
