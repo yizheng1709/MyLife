@@ -18,8 +18,8 @@
 <br> <br>
 
     <ul style="list-style-type:none;">
-    <% if @organizers %>
-        <% @organizers.tasks.each do |task| %>
+    <% if @organizer %>
+        <% @organizer.tasks.each do |task| %>
             <li> <input type="text" name="<%= task.id %>" value="<%= task.task_name %>"> </input></li> 
         <% end %>
     <% end %>
