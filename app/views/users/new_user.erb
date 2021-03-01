@@ -4,14 +4,17 @@
 </audio>
 </div>
 <br><br>
+<div class="div1">
+<img src="/images/lake.gif" alt="lake.gif" class="homepage">
+</div>
 
 <% if @messages %>
     <% @messages.each do |message| %>
-      <p class="p7">  <%= "#{message}."%> </p> <br>
+      <br> <p class="p7">  <%= "#{message}."%> </p> <br>
     <% end %>
 <% end %>
-
-<p class="p13"> Please signup below. </p> <br> <br>
+<br>
+<p class="p12"> Please signup below. </p> <br> <br>
 
 <div class="login">
 <form method="post" action="/signup"> 
@@ -25,4 +28,4 @@
 
 </form>
 </div>
-<br> <br> <br> 
+<br> <br> <br> <br> <br>
