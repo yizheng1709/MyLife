@@ -15,7 +15,7 @@ In your terminal:
 
     git clone "paste-github-repo-code"
 
-Go to the first level directory that contains all of Rubytopia's folders. 
+Go to the first level directory that contains all of MyLife's folders. 
 
     bundle install #this will install any necessary gems
 
