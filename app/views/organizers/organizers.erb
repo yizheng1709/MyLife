@@ -16,15 +16,19 @@
 
 <div class="div1">
 <br>
-<p class="p13"> Here are your organizers, ordered by date: </p>
-<br> <br>
+<% if !@organizers.empty? %>
+    <p class="p13"> Here are your organizers, ordered by date: </p>
+    <br> <br>
 
-<% @organizers.each do |organizer| %>
-    <p>
-    <a href="/organizers/<%=organizer.id%>" class="date_link">
-    <%= organizer.date_of_tasks %> 
-    </a>
-    </p> 
+    <% @organizers.each do |organizer| %>
+        <p>
+        <a href="/organizers/<%=organizer.id%>" class="date_link">
+        <%= organizer.date_of_tasks %> 
+        </a>
+        </p> 
+        <% end %>
+    <% else %>
+    <p class="p13"> You don't have any organizers right now. </p>
 <% end %>
 
 </div>
