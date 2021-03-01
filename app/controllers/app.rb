@@ -1,7 +1,6 @@
 class ApplicationController < Sinatra::Base 
 
     configure do
-        # binding.pry
         set :public_folder, 'public'
         set :views, 'app/views'
         enable :sessions

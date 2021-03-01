@@ -8,9 +8,7 @@ class UsersController < ApplicationController
     
     post "/login" do
         @user = User.find_by(username: params[:username])
-        # binding.pry
         if @user && @user.authenticate(params[:password])
-            # binding.pry
           session[:user_id] = @user.id
           redirect "/users/logged_in_home"
         else 
@@ -21,15 +19,14 @@ class UsersController < ApplicationController
     get '/signup' do
         if session[:user_id]
             redirect "/users/logged_in_home"
-            #cant let current users sign up again if they are in session
         end
-        erb :"/users/new_user" #shows form for signing up
+        erb :"/users/new_user" 
     end
 
-    post '/signup' do #uses data from new_user.erb
+    post '/signup' do 
         @user = User.create(username: params[:username], password: params[:password])
         @messages = @user.errors.full_messages
-        # binding.pry
+
         if @user.id && @messages.empty?
             session[:user_id] = @user.id
             redirect to "/users/logged_in_home"
