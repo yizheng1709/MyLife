@@ -15,15 +15,20 @@
 <div class="div1">
 <br>
 
-<p class="p13"> Here are your entries, ordered by date: </p>
-<br> <br>
-<% @entries.each do |entry| %>
-<p>
-    <a href="/entries/<%=entry.id%>" class="date_link">
-    <%= entry.date %> 
-    </a>
-    </p> 
-<% end %>
+<% if !@entries.empty? %>
+
+    <p class="p13"> Here are your entries, ordered by date: </p>
+    <br> <br>
+    <% @entries.each do |entry| %>
+    <p>
+        <a href="/entries/<%=entry.id%>" class="date_link">
+        <%= entry.date %> 
+        </a>
+        </p> 
+    <% end %>
+<% else %>
+    <p class="p13"> You don't have any entries right now. </p>
+<%end%>
 
 </div>
 
