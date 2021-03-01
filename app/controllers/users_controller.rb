@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     get "/login" do
-        if in_session
+        if session[:user_id]
             erb :"/user/logged_in_home"
         end
         erb :index

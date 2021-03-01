@@ -30,7 +30,7 @@ class EntriesController < ApplicationController
     get '/entries/:id/edit' do
         redirect_if_not_logged_in
         @entry = find_entry
-        if @entry.user_id == current_user.id
+        if owner?(@entry)
             erb :"/entries/edit"
         else 
             redirect "/entries/#{@entry.id}"
@@ -40,16 +40,16 @@ class EntriesController < ApplicationController
     patch '/entries/:id/edit' do
         redirect_if_not_logged_in
         @entry = find_entry
-        if @entry.user_id == current_user.id
+        if owner?(@entry)
             @entry.update(content: params[:content].gsub(/\n/, "<br>"))
         end 
-            redirect to "/entries/#{@entry.id}"
+        redirect to "/entries/#{@entry.id}"
     end
 
     delete '/entries/:id/delete' do
         redirect_if_not_logged_in
         @entry = find_entry
-        if @entry.user_id == current_user.id
+        if owner?(@entry)
             @entry.destroy
             redirect to "/entries"
         else

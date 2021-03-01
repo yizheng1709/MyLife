@@ -28,9 +28,9 @@ class ApplicationController < Sinatra::Base
             object.user == current_user
         end
 
-        def in_session
-            session[:user_id]
-        end
+        # def in_session
+        #     session[:user_id]
+        # end
 
         def find_organizer
             Organizer.find_by(id: params[:id])
