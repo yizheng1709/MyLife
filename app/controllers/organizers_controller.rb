@@ -27,7 +27,7 @@ class OrganizersController < ApplicationController
     get '/organizers/:id/edit' do
         redirect_if_not_logged_in
         @organizer = find_organizer
-        if @organizer.user_id == current_user.id
+        if owner?(@organizer)
             erb :"/organizers/edit"
         else 
             redirect "/organizers/#{@organizer.id}"
@@ -42,18 +42,20 @@ class OrganizersController < ApplicationController
 
     patch '/organizers/:id/edit' do
         redirect_if_not_logged_in
-        @organizer = find_organizer
-        params[:tasks][0].each do |id, taskname|
-            task = Task.find_by(id: id)
-            task.update(task_name: taskname)
-        end
-        redirect to "/organizers/#{@organizer.id}"
+        organizer = find_organizer
+        if owner?(organizer)
+            params[:tasks][0].each do |id, taskname|
+                task = Task.find_by(id: id)
+                task.update(task_name: taskname)
+            end
+        end 
+        redirect to "/organizers/#{organizer.id}"
     end
 
     delete '/organizers/:id/delete' do
         redirect_if_not_logged_in
         @organizer = find_organizer
-        if @organizer.user_id == current_user.id
+        if owner?(@organizer)
             @organizer.destroy
             redirect to "/organizers"
         else
