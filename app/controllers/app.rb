@@ -18,7 +18,15 @@ class ApplicationController < Sinatra::Base
 
     get '/yoga' do
         redirect_if_not_logged_in
-        erb :yoga
+        erb :"activities/yoga"
+    end
+    get '/cooking' do
+        redirect_if_not_logged_in
+        erb :"activities/cooking"
+    end
+    get '/blogilates' do
+        redirect_if_not_logged_in
+        erb :"activities/blogilates"
     end
 
     helpers do 
