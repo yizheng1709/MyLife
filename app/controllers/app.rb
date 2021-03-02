@@ -12,7 +12,21 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/playgame' do 
+        redirect_if_not_logged_in
         erb :playgame 
+    end
+
+    get '/yoga' do
+        redirect_if_not_logged_in
+        erb :"activities/yoga"
+    end
+    get '/cooking' do
+        redirect_if_not_logged_in
+        erb :"activities/cooking"
+    end
+    get '/blogilates' do
+        redirect_if_not_logged_in
+        erb :"activities/blogilates"
     end
 
     helpers do 
