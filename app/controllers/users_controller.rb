@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     get "/login" do
         if session[:user_id]
-            erb :"/user/logged_in_home"
+            erb :"/users/logged_in_home"
         end
         erb :index
     end
