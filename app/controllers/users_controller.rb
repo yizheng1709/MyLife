@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-    get "/login" do
+    get "/" do
         if session[:user_id]
-            erb :"/users/logged_in_home"
+            redirect "/users/logged_in_home"
+        else 
+            erb :index
         end
-        erb :index
     end
     
     post "/login" do
@@ -19,8 +20,9 @@ class UsersController < ApplicationController
     get '/signup' do
         if session[:user_id]
             redirect "/users/logged_in_home"
+        else 
+            erb :"/users/new_user"
         end
-        erb :"/users/new_user" 
     end
 
     post '/signup' do 
@@ -42,13 +44,13 @@ class UsersController < ApplicationController
             @user = current_user
             erb :"/users/logged_in_home"
         else 
-            redirect to "/login"
+            redirect to "/"
         end 
     end
 
     get '/logout' do 
         session.clear
-        redirect '/login'
+        redirect '/'
     end
 
 end
