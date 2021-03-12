@@ -54,14 +54,19 @@ class OrganizersController < ApplicationController
 
     delete '/organizers/:id/delete' do
         redirect_if_not_logged_in
-        organizer = find_organizer
-        if owner?(organizer)
-            organizer.destroy
+        set_organizer
+        if owner?(@organizer)
+            @organizer.destroy
             redirect to "/organizers"
         else
             redirect "/organizers"
         end
 
+    end
+
+    private 
+    def set_organizer #rails naming convention
+        @organizer = Organizer.find_by(id: params[:id]) #use instance variable
     end
 
 end

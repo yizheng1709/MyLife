@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
 
     post '/entries' do
         redirect_if_not_logged_in
+        # binding.pry
         @entry = current_user.entries.create(date: params[:date], content: params[:content].gsub(/\n/, '<br>'))
         if @entry.id
             redirect to "/entries/#{@entry.id}"
