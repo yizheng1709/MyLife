@@ -1,6 +1,12 @@
 # MyLife
 
-This is a little web applicate built with Sinatra with the intention to help the user relax and gather their thoughts. MyLife gives the user the option to write down journal entries and will list all entries by date. There is also an organizer feature that the user can use to list down all the tasks for a given date. Another option to relax is to play a game! Each page has an audio player, and music tends to help people destress. There is also an embedded Repl of Rubytopia, a mini CLI RPG. 
+This is a little web applicate built with Sinatra with the intention to help the user relax and gather their thoughts. 
+
+To begin, the user has to signup.
+
+![Alt text](public/images/sinatra1.gif?raw=true "signup")
+
+MyLife gives the user the option to write down journal entries and will list all entries by date. There is also an organizer feature that the user can use to list down all the tasks for a given date. Another option to relax is to play a game! Each page has an audio player, and music tends to help people destress. There is also an embedded Repl of Rubytopia, a mini CLI RPG. 
 
 
 ### Prerequisites
