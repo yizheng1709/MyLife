@@ -5,7 +5,7 @@ This is a little web application built with Sinatra with the intention to help t
 
 ### Prerequisites
 
-This little web application was mainly written with the Ruby language and uses several gems. The Installing section will show you how to install this gem! 
+This little web application was mainly written with the Ruby language and uses several gems. The Installing section will show you how to install this repo's gems! 
 
 ### Installing
     
