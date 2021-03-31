@@ -10,8 +10,14 @@ MyLife gives the user the option to write down journal entries and will list all
 
 ![Alt text](public/images/sinatra2.gif?raw=true "organizers and entries")
 
+The Activities section links to playlists of cooking/blogilates/yoga videos.
+
+![Alt text](public/images/sinatra3.gif?raw=true "activities")
+
 
 Another option to relax is to play a game! Each page has an audio player, and music tends to help people destress. There is also an embedded Repl of Rubytopia, a mini CLI RPG. 
+
+![Alt text](public/images/sinatra4.gif?raw=true "cli")
 
 
 ### Prerequisites
