@@ -6,7 +6,12 @@ To begin, the user has to signup.
 
 ![Alt text](public/images/sinatra1.gif?raw=true "signup")
 
-MyLife gives the user the option to write down journal entries and will list all entries by date. There is also an organizer feature that the user can use to list down all the tasks for a given date. Another option to relax is to play a game! Each page has an audio player, and music tends to help people destress. There is also an embedded Repl of Rubytopia, a mini CLI RPG. 
+MyLife gives the user the option to write down journal entries and will list all entries by date. There is also an organizer feature that the user can use to list down all the tasks for a given date. 
+
+![Alt text](public/images/sinatra2.gif?raw=true "organizers and entries")
+
+
+Another option to relax is to play a game! Each page has an audio player, and music tends to help people destress. There is also an embedded Repl of Rubytopia, a mini CLI RPG. 
 
 
 ### Prerequisites
